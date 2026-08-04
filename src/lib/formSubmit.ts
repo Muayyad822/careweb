@@ -1,4 +1,5 @@
-export const CAREWEB_CONTACT_EMAIL = "info@carewebhealthcare.com";
+// Secure FormSubmit endpoint token (masks info@carewebhealthcare.com to protect against scrapers/spam)
+export const FORMSUBMIT_ENDPOINT_TOKEN = "27fe4a42a943e736652de3230f0573de";
 
 interface FormSubmitOptions {
   subject: string;
@@ -31,7 +32,7 @@ export async function submitForm({
     };
 
     const response = await fetch(
-      `https://formsubmit.co/ajax/${CAREWEB_CONTACT_EMAIL}`,
+      `https://formsubmit.co/ajax/${FORMSUBMIT_ENDPOINT_TOKEN}`,
       {
         method: "POST",
         headers: {
