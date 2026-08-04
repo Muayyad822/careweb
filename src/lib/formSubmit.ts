@@ -1,14 +1,17 @@
-// Secure FormSubmit endpoint token (masks info@carewebhealthcare.com to protect against scrapers/spam)
-export const FORMSUBMIT_ENDPOINT_TOKEN = "27fe4a42a943e736652de3230f0573de";
+// Secure FormSubmit endpoint tokens (protects against web scrapers and spam)
+export const FORMSUBMIT_GENERAL_TOKEN = "27fe4a42a943e736652de3230f0573de"; // routes to info@carewebhealthcare.com
+export const FORMSUBMIT_CAREERS_TARGET = "hr@carewebhealthcare.com"; // routes to hr@carewebhealthcare.com
 
 interface FormSubmitOptions {
   subject: string;
   data: Record<string, string | number | boolean | undefined | null>;
+  recipient?: "general" | "careers" | string;
 }
 
 export async function submitForm({
   subject,
   data,
+  recipient = "general",
 }: FormSubmitOptions): Promise<{ success: boolean; message?: string }> {
   try {
     // Filter out undefined or null values
@@ -31,8 +34,15 @@ export async function submitForm({
       }),
     };
 
+    const targetEndpoint =
+      recipient === "careers"
+        ? FORMSUBMIT_CAREERS_TARGET
+        : recipient === "general"
+        ? FORMSUBMIT_GENERAL_TOKEN
+        : recipient;
+
     const response = await fetch(
-      `https://formsubmit.co/ajax/${FORMSUBMIT_ENDPOINT_TOKEN}`,
+      `https://formsubmit.co/ajax/${targetEndpoint}`,
       {
         method: "POST",
         headers: {
@@ -65,3 +75,4 @@ export async function submitForm({
     };
   }
 }
+

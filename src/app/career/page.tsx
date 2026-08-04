@@ -130,6 +130,7 @@ export default function CareerPage() {
     setErrorMessage("");
 
     const res = await submitForm({
+      recipient: "careers",
       subject: `New Job Application: ${formData.name} - ${formData.role}`,
       data: {
         "Applicant Name": formData.name,
