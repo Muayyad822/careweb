@@ -43,11 +43,6 @@ export default function ContactPage() {
       {/* 1. HERO SECTION */}
       <section className="pt-8 md:pt-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DCF2F2] border border-[#BDE3E3] text-[#0E6C6E] text-xs font-bold uppercase tracking-wider">
-            <Clock className="w-3.5 h-3.5" />
-            <span>24/7 Clinical Support Available</span>
-          </div>
-
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-heading text-[#0D1E32] tracking-tight leading-[1.12]">
             We&apos;re here to support you,{" "}
             <span className="text-[#0E6C6E] underline decoration-[#C9933B]/40 decoration-4 underline-offset-4">
@@ -62,94 +57,21 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* 2. CONTACT GRID */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-          {/* Left Column: Direct Contact Details & Emergency Desk */}
-          <div className="lg:col-span-5 space-y-6">
-            {/* 24/7 Emergency Care Card */}
-            <div className="bg-[#0D1E32] text-white rounded-3xl p-7 sm:p-8 navy-banner-pattern border border-slate-800 shadow-xl space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-900/80 text-teal-300 text-xs font-bold uppercase tracking-wider border border-teal-700/50">
-                <span className="w-2 h-2 rounded-full bg-teal-400 pulse-dot" />
-                <span>Urgent Care Desk</span>
-              </div>
-              <h3 className="text-2xl font-bold font-heading text-white">
-                Need Immediate Care Support?
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                If you require crisis cover, emergency respite, or immediate hospital discharge support, call our dedicated clinical coordinator team directly.
-              </p>
-              <div className="pt-2">
-                <a
-                  href="tel:08001234567"
-                  className="w-full py-3.5 px-4 rounded-xl bg-[#0E6C6E] hover:bg-[#094E50] text-white text-sm font-bold uppercase tracking-wider text-center flex items-center justify-center gap-2 shadow-md transition-colors"
-                >
-                  <Phone className="w-4 h-4" />
-                  <span>Call 0800 123 4567 (Free)</span>
-                </a>
-              </div>
+      {/* 2. CONSULTATION FORM */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-md">
+          <div className="space-y-2 border-b border-slate-100 pb-6 mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#DCF2F2] text-[#0E6C6E] text-xs font-bold uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Direct Consultation Request</span>
             </div>
-
-            {/* Office & Operations Card */}
-            <div className="bg-white rounded-3xl p-7 border border-slate-200/90 shadow-xs space-y-5">
-              <h4 className="text-xs font-bold uppercase tracking-widest text-[#0E6C6E] font-heading">
-                Contact Information
-              </h4>
-
-              <div className="space-y-4 text-sm text-slate-700">
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-[#DCF2F2] text-[#0E6C6E] flex items-center justify-center shrink-0 mt-0.5">
-                    <MapPin className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h5 className="font-bold text-slate-900 text-xs uppercase tracking-wider">
-                      Head Office
-                    </h5>
-                    <p className="text-xs text-slate-600 mt-0.5">
-                      124 Care Gardens, West Kensington, London, W14 8AS
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-[#DCF2F2] text-[#0E6C6E] flex items-center justify-center shrink-0 mt-0.5">
-                    <Mail className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h5 className="font-bold text-slate-900 text-xs uppercase tracking-wider">
-                      Clinical Enquiries
-                    </h5>
-                    <p className="text-xs text-slate-600 mt-0.5">
-                      clinical@careweb.co.uk
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-[#DCF2F2] text-[#0E6C6E] flex items-center justify-center shrink-0 mt-0.5">
-                    <Clock className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h5 className="font-bold text-slate-900 text-xs uppercase tracking-wider">
-                      Office Hours
-                    </h5>
-                    <p className="text-xs text-slate-600 mt-0.5">
-                      Mon – Sun: 07:00 – 21:00 (Emergency desk active 24/7)
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-3 border-t border-slate-100 flex items-center gap-2 text-xs font-semibold text-[#0E6C6E]">
-                <ShieldCheck className="w-4 h-4" />
-                <span>Accredited &amp; Fully Insured UK Care Provider</span>
-              </div>
-            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold font-heading text-slate-900">
+              Speak with a Clinical Coordinator
+            </h2>
+            <p className="text-sm text-slate-600">
+              Fill in your details below and our registered team will get in touch promptly to discuss your care requirements.
+            </p>
           </div>
-
-          {/* Right Column: Interactive Consultation & Enquiry Form */}
-          <div className="lg:col-span-7">
-            <div className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-md">
               {submitted ? (
                 <div className="text-center py-12 space-y-4">
                   <div className="w-16 h-16 bg-teal-100 text-[#0E6C6E] rounded-full flex items-center justify-center mx-auto">
@@ -294,7 +216,77 @@ export default function ContactPage() {
                 </form>
               )}
             </div>
+          </section>
+
+      {/* 3. MAP AND CONTACT DETAILS SECTION */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="space-y-2">
+          <h2 className="text-3xl sm:text-4xl font-bold font-heading text-[#3B1F4A] tracking-tight">
+            Map and contact details
+          </h2>
+          <p className="text-sm text-slate-600">
+            Find our registered office in Wolverhampton or get in touch directly with our clinical coordinators.
+          </p>
+        </div>
+
+        {/* 3-Column Info Cards (Above the Map) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-white rounded-2xl p-7 border border-slate-200 shadow-xs space-y-2">
+            <h3 className="text-xl font-bold font-heading text-[#3B1F4A]">
+              CareWeb Limited
+            </h3>
+            <div className="text-sm text-slate-700 leading-relaxed space-y-0.5">
+              <p>32 Greenock Crescent</p>
+              <p>Wolverhampton</p>
+              <p className="font-semibold text-slate-900">WV4 6BJ</p>
+            </div>
           </div>
+
+          <div className="bg-white rounded-2xl p-7 border border-slate-200 shadow-xs space-y-2">
+            <h3 className="text-xl font-bold font-heading text-[#3B1F4A]">
+              Telephone
+            </h3>
+            <div>
+              <a
+                href="tel:07803465205"
+                className="text-lg font-bold text-[#0E6C6E] hover:underline"
+              >
+                07803 465205
+              </a>
+              <p className="text-xs text-slate-500 mt-1">
+                24/7 direct clinical coordinator line
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl p-7 border border-slate-200 shadow-xs space-y-2">
+            <h3 className="text-xl font-bold font-heading text-[#3B1F4A]">
+              Enquiries
+            </h3>
+            <div>
+              <a
+                href="mailto:info@carewebhealthcare.com"
+                className="text-base font-bold text-[#0E6C6E] hover:underline break-all"
+              >
+                info@carewebhealthcare.com
+              </a>
+              <p className="text-xs text-slate-500 mt-1">
+                Fast response guarantee under 2 hours
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Embedded Interactive Map */}
+        <div className="w-full h-96 sm:h-[460px] rounded-3xl overflow-hidden shadow-lg border border-slate-200 bg-slate-100 relative">
+          <iframe
+            title="CareWeb Limited Office Location Map"
+            src="https://maps.google.com/maps?q=32%20Greenock%20Crescent,%20Wolverhampton,%20WV4%206BJ&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            className="w-full h-full border-0"
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </section>
     </div>

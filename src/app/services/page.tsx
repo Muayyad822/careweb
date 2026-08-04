@@ -10,7 +10,6 @@ import {
   Star,
   Sparkles,
   Heart,
-  Clock,
   Home,
   CheckCircle2,
   Activity,
@@ -39,57 +38,31 @@ export default function ServicesPage() {
     <div className="space-y-24 md:space-y-32 pb-24">
       {/* 1. HERO SECTION */}
       <section className="pt-8 md:pt-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          <div className="lg:col-span-8 space-y-5">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DCF2F2] border border-[#BDE3E3] text-[#0E6C6E] text-xs font-bold uppercase tracking-wider">
-              <ShieldCheck className="w-3.5 h-3.5" />
-              <span>Accredited Healthcare &amp; Professional Personal Care</span>
-            </div>
+        <div className="max-w-3xl space-y-6">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-heading text-[#0D1E32] tracking-tight leading-[1.12]">
+            Care precisely tailored to your life and clinical needs.
+          </h1>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-heading text-[#0D1E32] tracking-tight leading-[1.12]">
-              Care precisely tailored to your life and clinical needs.
-            </h1>
+          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+            From daily companionship to complex clinical nursing, we provide expert-led care that preserves dignity, safety, and independence in the comfort of your own home.
+          </p>
 
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl">
-              From daily companionship to complex clinical nursing, we provide expert-led care that preserves dignity, safety, and independence in the comfort of your own home.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-4 pt-2">
-              <button
-                onClick={() => openConsultation()}
-                type="button"
-                className="px-7 py-3.5 rounded-full bg-[#0E6C6E] hover:bg-[#094E50] text-white text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-lg transition-all active:scale-95 cursor-pointer flex items-center gap-2"
-              >
-                <span>Arrange Free Clinical Assessment</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-              <a
-                href="tel:08001234567"
-                className="px-6 py-3.5 rounded-full bg-white border border-slate-300 text-slate-800 text-xs font-bold uppercase tracking-wider shadow-2xs hover:bg-slate-50 transition-all flex items-center gap-2"
-              >
-                <Phone className="w-4 h-4 text-[#0E6C6E]" />
-                <span>Call 0800 123 4567</span>
-              </a>
-            </div>
-          </div>
-
-          <div className="lg:col-span-4 bg-[#11253E] text-white rounded-3xl p-6 sm:p-8 space-y-4 border border-slate-700/60 shadow-lg">
-            <div className="flex items-center gap-2 text-teal-400 text-xs font-bold uppercase tracking-wider">
-              <Clock className="w-4 h-4" />
-              <span>Fast-Track Placement</span>
-            </div>
-            <h3 className="text-xl font-bold font-heading text-white">
-              Emergency Care Start Within 2-24 Hours
-            </h3>
-            <p className="text-xs text-slate-300 leading-relaxed">
-              If a loved one is being discharged from hospital or requires immediate care coverage, our clinical team can deploy verified carers rapidly.
-            </p>
+          <div className="flex flex-wrap items-center gap-4 pt-2">
             <button
-              onClick={() => openConsultation("Emergency Care Coverage")}
-              className="w-full py-2.5 rounded-xl bg-[#0E6C6E] hover:bg-teal-700 text-white text-xs font-bold uppercase tracking-wider transition-colors"
+              onClick={() => openConsultation()}
+              type="button"
+              className="px-7 py-3.5 rounded-full bg-[#0E6C6E] hover:bg-[#094E50] text-white text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-lg transition-all active:scale-95 cursor-pointer flex items-center gap-2"
             >
-              Request Emergency Coverage
+              <span>Arrange Free Clinical Assessment</span>
+              <ArrowRight className="w-4 h-4" />
             </button>
+            <a
+              href="tel:07803465205"
+              className="px-6 py-3.5 rounded-full bg-white border border-slate-300 text-slate-800 text-xs font-bold uppercase tracking-wider shadow-2xs hover:bg-slate-50 transition-all flex items-center gap-2"
+            >
+              <Phone className="w-4 h-4 text-[#0E6C6E]" />
+              <span>Call 07803 465205</span>
+            </a>
           </div>
         </div>
       </section>
@@ -142,9 +115,6 @@ export default function ServicesPage() {
                 />
               </div>
               <div className="sm:col-span-7 space-y-4">
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#DCF2F2] text-[#0E6C6E] text-[10px] font-bold uppercase tracking-wider">
-                  <span>Social & Emotional</span>
-                </div>
                 <h3 className="text-2xl font-bold font-heading text-slate-900">
                   Companionship & Wellbeing
                 </h3>
@@ -328,10 +298,6 @@ export default function ServicesPage() {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-[#0D1E32] text-white rounded-3xl p-8 sm:p-12 lg:p-14 navy-banner-pattern border border-slate-800 shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div className="lg:col-span-7 space-y-5">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0E6C6E]/40 border border-teal-500/40 text-teal-300 text-xs font-bold uppercase tracking-wider">
-                <Home className="w-3.5 h-3.5" />
-                <span>Full-Time Residential Alternative</span>
-              </div>
               <h2 className="text-3xl sm:text-4xl font-bold font-heading text-white">
                 24/7 Live-In Care in Your Own Cherished Home
               </h2>

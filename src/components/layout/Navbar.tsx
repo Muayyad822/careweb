@@ -57,9 +57,9 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
           {/* Left badge & Care Status */}
           <div className="flex items-center gap-3">
-            <span className="inline-flex items-center gap-1.5 text-teal-400 font-semibold bg-[#0E6C6E]/30 px-2.5 py-0.5 rounded-full border border-teal-700/50">
+            <span className="inline-flex items-center gap-2 text-teal-400 font-medium">
               <span className="w-1.5 h-1.5 rounded-full bg-teal-400 pulse-dot" />
-              Dedicated Healthcare & Home Support
+              Dedicated Healthcare &amp; Home Support
             </span>
             <span className="hidden sm:inline text-slate-400">
               Professional Carers • Fast 2-Hour Rapid Matching
@@ -73,11 +73,11 @@ export function Navbar() {
               <span className="hidden md:inline">24/7 Clinical Desk:</span>
             </div>
             <a
-              href="tel:08001234567"
+              href="tel:07803465205"
               className="flex items-center gap-1.5 font-bold text-white hover:text-teal-300 transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-teal-400 fill-teal-400" />
-              <span>0800 123 4567</span>
+              <span>07803 465205</span>
             </a>
           </div>
         </div>
@@ -92,21 +92,17 @@ export function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-20 sm:h-24">
             {/* Brand Logo */}
             <Link
               href="/"
-              className="flex items-center group focus:outline-none"
+              className="flex items-center group focus:outline-none shrink-0 py-1"
             >
-              <div className="relative h-12 w-40 sm:w-44">
-                <Image
-                  src="/CarewebLogo.png"
-                  alt="CareWeb Logo"
-                  fill
-                  priority
-                  className="object-contain object-left group-hover:scale-102 transition-transform"
-                />
-              </div>
+              <img
+                src="/CarewebLogo_v4.png"
+                alt="CareWeb Logo"
+                className="h-13 sm:h-15 md:h-18 w-auto object-contain group-hover:scale-102 transition-transform"
+              />
             </Link>
 
             {/* Desktop Navigation Links */}
@@ -151,7 +147,7 @@ export function Navbar() {
             {/* Mobile menu button */}
             <div className="flex md:hidden items-center gap-2">
               <a
-                href="tel:08001234567"
+                href="tel:07803465205"
                 className="p-2 rounded-lg bg-[#0E6C6E] text-white shadow-xs"
                 aria-label="Call emergency hotline"
               >
@@ -183,11 +179,11 @@ export function Navbar() {
               <span>Professional Healthcare Team</span>
             </div>
             <a
-              href="tel:08001234567"
+              href="tel:07803465205"
               className="text-xs font-bold text-[#0E6C6E] underline flex items-center gap-1"
             >
               <Phone className="w-3 h-3" />
-              0800 123 4567
+              07803 465205
             </a>
           </div>
 

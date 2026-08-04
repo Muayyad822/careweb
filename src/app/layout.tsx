@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { ConsultationProvider } from "@/context/ConsultationContext";
 import { ConsultationModal } from "@/components/modals/ConsultationModal";
 import { InquiryModal } from "@/components/modals/InquiryModal";
+import { CookieBanner } from "@/components/layout/CookieBanner";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -22,6 +23,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.carewebhealthcare.com"),
   title: "CareWeb | Trusted Domiciliary, Live-In & Complex Healthcare Across the UK",
   description:
     "Excellence in home-based clinical care, personal care, live-in support and specialist dementia care delivered with compassion and integrity across the UK.",
@@ -37,9 +39,9 @@ export const metadata: Metadata = {
     "complex care",
   ],
   icons: {
-    icon: "/CarewebLogo.png",
-    shortcut: "/CarewebLogo.png",
-    apple: "/CarewebLogo.png",
+    icon: "/CarewebLogo_v3.png",
+    shortcut: "/CarewebLogo_v3.png",
+    apple: "/CarewebLogo_v3.png",
   },
 };
 
@@ -60,6 +62,7 @@ export default function RootLayout({
           <Footer />
           <ConsultationModal />
           <InquiryModal />
+          <CookieBanner />
         </ConsultationProvider>
       </body>
     </html>

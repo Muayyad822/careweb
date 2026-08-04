@@ -57,12 +57,6 @@ export function ConsultationModal() {
           >
             <X className="w-5 h-5" />
           </button>
-          <div className="flex items-center gap-2 mb-2">
-            <span className="bg-white/20 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1">
-              <ShieldCheck className="w-3.5 h-3.5" />
-              Free &amp; Confidential Clinical Consultation
-            </span>
-          </div>
           <h3 className="text-2xl font-bold font-heading">Book a Free Care Consultation</h3>
           <p className="text-teal-100 text-xs sm:text-sm mt-1">
             Speak with a clinical care coordinator for confidential, tailored advice.

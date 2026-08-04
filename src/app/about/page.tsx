@@ -68,11 +68,6 @@ export default function AboutPage() {
       <section className="pt-8 md:pt-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DCF2F2] border border-[#BDE3E3] text-[#0E6C6E] text-xs font-bold uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Our Story &amp; Purpose</span>
-            </div>
-
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-heading text-[#0D1E32] tracking-tight leading-[1.12]">
               Compassion is at the{" "}
               <span className="text-[#0E6C6E] underline decoration-[#C9933B]/40 decoration-4 underline-offset-4">
@@ -181,7 +176,7 @@ export default function AboutPage() {
       </section>
 
       {/* 4. LEADERSHIP & CLINICAL DIRECTORS */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      {/* <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-slate-200">
           <div>
             <span className="text-xs font-bold uppercase tracking-widest text-[#0E6C6E] block mb-1">
@@ -224,7 +219,7 @@ export default function AboutPage() {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
 
       {/* 5. BOTTOM CONSULTATION BANNER */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

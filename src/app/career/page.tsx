@@ -141,11 +141,6 @@ export default function CareerPage() {
       <section className="pt-8 md:pt-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DCF2F2] border border-[#BDE3E3] text-[#0E6C6E] text-xs font-bold uppercase tracking-wider">
-              <Users className="w-3.5 h-3.5" />
-              <span>We Are Hiring • Join CareWeb UK</span>
-            </div>
-
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-heading text-[#0D1E32] tracking-tight leading-[1.12]">
               Build a rewarding career where your compassion is{" "}
               <span className="text-[#0E6C6E] underline decoration-[#C9933B]/40 decoration-4 underline-offset-4">
@@ -177,8 +172,8 @@ export default function CareerPage() {
 
           <div className="lg:col-span-5 relative aspect-[4/3.5] rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
             <Image
-              src="/images/nurse-tablet.png"
-              alt="CareWeb nurse using clinical management tablet"
+              src="/images/career-nurse-hero.png"
+              alt="CareWeb nurse holding clinical tablet in modern care center"
               fill
               priority
               className="object-cover"

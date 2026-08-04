@@ -11,8 +11,6 @@ import {
   Heart,
   Clock,
   Mail,
-  ArrowRight,
-  CheckCircle2,
 } from "lucide-react";
 
 export function Footer() {
@@ -22,10 +20,6 @@ export function Footer() {
         {/* Top Emergency CTA Strip */}
         <div className="bg-[#11253E] border border-slate-700/60 rounded-3xl p-6 sm:p-8 mb-14 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
           <div className="lg:col-span-8 space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0E6C6E]/40 border border-teal-500/40 text-teal-300 text-xs font-bold uppercase tracking-wider">
-              <Clock className="w-3.5 h-3.5" />
-              <span>24/7 Rapid Emergency Response</span>
-            </div>
             <h3 className="text-2xl sm:text-3xl font-bold font-heading text-white">
               Need urgent care support within the next 24 hours?
             </h3>
@@ -35,19 +29,12 @@ export function Footer() {
           </div>
           <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-end">
             <a
-              href="tel:08001234567"
+              href="tel:07803465205"
               className="px-6 py-3.5 rounded-full bg-[#0E6C6E] hover:bg-[#094E50] text-white text-xs font-bold uppercase tracking-wider text-center shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
             >
               <Phone className="w-4 h-4" />
-              <span>Call 0800 123 4567</span>
+              <span>Call 07803 465205</span>
             </a>
-            <Link
-              href="/contact"
-              className="px-6 py-3.5 rounded-full bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold uppercase tracking-wider text-center border border-slate-600/50 transition-all flex items-center justify-center gap-2"
-            >
-              <span>Request Fast Callback</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
           </div>
         </div>
 
@@ -57,16 +44,13 @@ export function Footer() {
           <div className="lg:col-span-2 space-y-4">
             <Link
               href="/"
-              className="inline-block bg-white px-4 py-2.5 rounded-2xl hover:bg-slate-50 transition-colors"
+              className="inline-block bg-white px-5 py-3 rounded-2xl hover:bg-slate-50 transition-all shadow-sm"
             >
-              <div className="relative h-9 w-40">
-                <Image
-                  src="/CarewebLogo.png"
-                  alt="CareWeb Logo"
-                  fill
-                  className="object-contain"
-                />
-              </div>
+              <img
+                src="/CarewebLogo_v4.png"
+                alt="CareWeb Logo"
+                className="h-10 sm:h-12 w-auto object-contain"
+              />
             </Link>
             <p className="text-slate-300 text-sm max-w-sm leading-relaxed">
               Excellence in home-based clinical care, live-in support, and specialist dementia care delivered with empathy and professional integrity across the UK.
@@ -161,16 +145,20 @@ export function Footer() {
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-teal-400 shrink-0 mt-0.5" />
                 <span className="text-xs leading-relaxed">
-                  124 Care Gardens, West Kensington, London, W14 8AS
+                  32 Greenock Crescent, Wolverhampton, WV4 6BJ
                 </span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-teal-400 shrink-0" />
-                <span className="text-white font-bold">0800 123 4567</span>
+                <a href="tel:07803465205" className="text-white font-bold hover:text-teal-300 transition-colors">
+                  07803 465205
+                </a>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-teal-400 shrink-0" />
-                <span className="text-xs">clinical@careweb.co.uk</span>
+                <a href="mailto:info@carewebhealthcare.com" className="text-xs hover:text-teal-300 transition-colors">
+                  info@carewebhealthcare.com
+                </a>
               </div>
               <div className="pt-2">
                 <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-3 text-xs text-slate-300">
@@ -186,48 +174,26 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Accreditations Strip */}
+        {/* Policies and Registered Office Strip */}
         <div className="py-6 border-b border-slate-800/80 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-400">
           <div className="flex flex-wrap items-center gap-6">
-            <span className="flex items-center gap-1.5 text-teal-300 font-medium">
-              <CheckCircle2 className="w-3.5 h-3.5 text-teal-400" />
-              Accredited Care Providers
-            </span>
-            <span className="flex items-center gap-1.5 text-slate-300 font-medium">
-              <CheckCircle2 className="w-3.5 h-3.5 text-teal-400" />
-              UKHCA Registered
-            </span>
-            <span className="flex items-center gap-1.5 text-slate-300 font-medium">
-              <CheckCircle2 className="w-3.5 h-3.5 text-teal-400" />
-              Skills for Care Endorsed
-            </span>
-            <span className="flex items-center gap-1.5 text-slate-300 font-medium">
-              <CheckCircle2 className="w-3.5 h-3.5 text-teal-400" />
-              Enhanced DBS Checked Staff
-            </span>
-          </div>
-          <div className="text-slate-400 text-xs">
-            Headquarters: London • Services Across Greater London, Manchester & Home Counties
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <p>
-            © {new Date().getFullYear()} CareWeb UK Ltd. Dedicated to Excellence in Home Care. All Rights Reserved.
-          </p>
-          <div className="flex items-center gap-4 text-slate-400">
-            <Link href="/about" className="hover:text-white transition-colors">
+            <Link href="/privacy-policy" className="hover:text-teal-300 transition-colors text-slate-300">
               Privacy Policy
             </Link>
-            <span>•</span>
-            <Link href="/about" className="hover:text-white transition-colors">
-              Terms & Conditions
+            <Link href="/cookie-policy" className="hover:text-teal-300 transition-colors text-slate-300">
+              Cookie Policy
             </Link>
-            <span>•</span>
-            <Link href="/about" className="hover:text-white transition-colors">
-              Cookies
+            <Link href="/safeguarding" className="hover:text-teal-300 transition-colors text-slate-300">
+              Safeguarding Statement
             </Link>
+            <Link href="/terms-and-conditions" className="hover:text-teal-300 transition-colors text-slate-300">
+              Terms and Conditions
+            </Link>
+          </div>
+          <div className="text-slate-400 text-xs">
+             <p>
+            © {new Date().getFullYear()} CareWeb Limited. Dedicated to Excellence in Home Care. All Rights Reserved.
+          </p>
           </div>
         </div>
       </div>

@@ -234,12 +234,6 @@ export default function HomePage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* Left Column Content */}
           <div className="lg:col-span-7 space-y-6">
-            {/* Top Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DCF2F2] border border-[#BDE3E3] text-[#0E6C6E] text-xs font-bold uppercase tracking-wider">
-              <ShieldCheck className="w-4 h-4" />
-              <span>Compassionate Care • UK Clinical Healthcare Excellence</span>
-            </div>
-
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-heading text-[#0D1E32] tracking-tight leading-[1.12]">
               Compassionate Care in the{" "}
@@ -336,18 +330,12 @@ export default function HomePage() {
                   </p>
                 </div>
               </div>
-
-              {/* Floating 24/7 Badge on top right */}
-              <div className="absolute top-4 right-4 bg-[#0D1E32]/90 backdrop-blur-md text-white px-3.5 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-md">
-                <span className="w-2 h-2 rounded-full bg-teal-400 pulse-dot" />
-                <span>24/7 Live Care Desk</span>
-              </div>
             </div>
           </div>
         </div>
 
         {/* 1.1 INTERACTIVE QUICK CARE MATCHER BAR (OneCall24-Inspired) */}
-        <div className="mt-12 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-lg relative overflow-hidden">
+        {/* <div className="mt-12 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-lg relative overflow-hidden">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-slate-100">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-[#0E6C6E] block">
@@ -363,7 +351,6 @@ export default function HomePage() {
           </div>
 
           <form onSubmit={handleMatcherSubmit} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-6 items-end">
-            {/* Step 1: Care Type */}
             <div>
               <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
                 1. Service Needed
@@ -382,7 +369,6 @@ export default function HomePage() {
               </select>
             </div>
 
-            {/* Step 2: Urgency */}
             <div>
               <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
                 2. When is care required?
@@ -399,7 +385,6 @@ export default function HomePage() {
               </select>
             </div>
 
-            {/* Step 3: Location */}
             <div>
               <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
                 3. UK Town or Postcode
@@ -416,7 +401,6 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Step 4: CTA Button */}
             <div>
               <button
                 type="submit"
@@ -427,7 +411,7 @@ export default function HomePage() {
               </button>
             </div>
           </form>
-        </div>
+        </div> */}
       </section>
 
       {/* 2. UK ACCREDITATIONS & HEALTHCARE TRUST STRIP */}
@@ -474,10 +458,6 @@ export default function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-4 border-b border-slate-200">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#DCF2F2] text-[#0E6C6E] text-xs font-bold uppercase tracking-wider mb-2">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Tailored Healthcare Offerings</span>
-            </div>
             <h2 className="text-3xl sm:text-4xl font-bold font-heading text-[#0D1E32]">
               Specialist Domiciliary &amp; Clinical Services
             </h2>
