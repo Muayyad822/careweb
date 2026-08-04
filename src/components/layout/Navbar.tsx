@@ -84,7 +84,7 @@ export function Navbar() {
               <span className="hidden md:inline">24/7 Clinical Desk:</span>
             </div>
             <a
-              href="tel:07803465205"
+              href="tel:+447448335889"
               className="flex items-center gap-1.5 font-bold text-white hover:text-teal-300 transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-teal-400 fill-teal-400" />
@@ -158,7 +158,7 @@ export function Navbar() {
             {/* Mobile menu button */}
             <div className="flex md:hidden items-center gap-2">
               <a
-                href="tel:07803465205"
+                href="tel:+447448335889"
                 className="p-2 rounded-lg bg-[#0E6C6E] text-white shadow-xs"
                 aria-label="Call emergency hotline"
               >
@@ -229,7 +229,7 @@ export function Navbar() {
               <span>24/7 Clinical Support</span>
             </div>
             <a
-              href="tel:07803465205"
+              href="tel:+447448335889"
               className="text-xs font-extrabold text-[#0D1E32] hover:text-[#0E6C6E] flex items-center gap-1.5"
             >
               <Phone className="w-3.5 h-3.5 text-[#0E6C6E]" />

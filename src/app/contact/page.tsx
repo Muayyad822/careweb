@@ -288,7 +288,7 @@ export default function ContactPage() {
             </h3>
             <div>
               <a
-                href="tel:07803465205"
+                href="tel:+447448335889"
                 className="text-lg font-bold text-[#0E6C6E] hover:underline"
               >
                 +44 7448 335889

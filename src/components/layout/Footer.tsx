@@ -29,7 +29,7 @@ export function Footer() {
           </div>
           <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-end">
             <a
-              href="tel:07803465205"
+              href="tel:+447448335889"
               className="px-6 py-3.5 rounded-full bg-[#0E6C6E] hover:bg-[#094E50] text-white text-xs font-bold uppercase tracking-wider text-center shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
             >
               <Phone className="w-4 h-4" />
@@ -150,7 +150,7 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-teal-400 shrink-0" />
-                <a href="tel:07803465205" className="text-white font-bold hover:text-teal-300 transition-colors">
+                <a href="tel:+447448335889" className="text-white font-bold hover:text-teal-300 transition-colors">
                   +44 7448 335889
                 </a>
               </div>

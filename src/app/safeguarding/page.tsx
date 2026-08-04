@@ -81,7 +81,7 @@ export default function SafeguardingPage() {
                   Direct Telephone
                 </div>
                 <a
-                  href="tel:07803465205"
+                  href="tel:+447448335889"
                   className="text-base font-bold text-slate-900 hover:text-[#0E6C6E] transition-colors block"
                 >
                   +44 7448 335889
