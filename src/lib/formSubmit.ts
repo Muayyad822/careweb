@@ -1,6 +1,6 @@
 // Secure FormSubmit endpoint tokens (protects against web scrapers and spam)
 export const FORMSUBMIT_GENERAL_TOKEN = "27fe4a42a943e736652de3230f0573de"; // routes to info@carewebhealthcare.com
-export const FORMSUBMIT_CAREERS_TARGET = "hr@carewebhealthcare.com"; // routes to hr@carewebhealthcare.com
+export const FORMSUBMIT_CAREERS_TARGET = "c42a03f13d1f6c8be760bf4a627ceac8"; // routes to hr@carewebhealthcare.com
 
 interface FormSubmitOptions {
   subject: string;
