@@ -38,31 +38,47 @@ export default function ServicesPage() {
     <div className="space-y-24 md:space-y-32 pb-24">
       {/* 1. HERO SECTION */}
       <section className="pt-8 md:pt-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl space-y-6">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-heading text-[#0D1E32] tracking-tight leading-[1.12]">
-            Care precisely tailored to your life and clinical needs.
-          </h1>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="lg:col-span-7 space-y-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold font-heading text-[#0D1E32] tracking-tight leading-[1.12]">
+              Care precisely tailored to your life and{" "}
+              <span className="text-[#0E6C6E] underline decoration-[#C9933B]/40 decoration-4 underline-offset-4">
+                clinical
+              </span>{" "}
+              needs.
+            </h1>
 
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            From daily companionship to complex clinical nursing, we provide expert-led care that preserves dignity, safety, and independence in the comfort of your own home.
-          </p>
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl">
+              From daily companionship to complex clinical nursing, we provide expert-led care that preserves dignity, safety, and independence in the comfort of your own home.
+            </p>
 
-          <div className="flex flex-wrap items-center gap-4 pt-2">
-            <button
-              onClick={() => openConsultation()}
-              type="button"
-              className="px-7 py-3.5 rounded-full bg-[#0E6C6E] hover:bg-[#094E50] text-white text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-lg transition-all active:scale-95 cursor-pointer flex items-center gap-2"
-            >
-              <span>Arrange Free Clinical Assessment</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-            <a
-              href="tel:07803465205"
-              className="px-6 py-3.5 rounded-full bg-white border border-slate-300 text-slate-800 text-xs font-bold uppercase tracking-wider shadow-2xs hover:bg-slate-50 transition-all flex items-center gap-2"
-            >
-              <Phone className="w-4 h-4 text-[#0E6C6E]" />
-              <span>Call 07803 465205</span>
-            </a>
+            <div className="flex flex-wrap items-center gap-4 pt-2">
+              <button
+                onClick={() => openConsultation()}
+                type="button"
+                className="px-7 py-3.5 rounded-full bg-[#0E6C6E] hover:bg-[#094E50] text-white text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-lg transition-all active:scale-95 cursor-pointer flex items-center gap-2"
+              >
+                <span>Arrange Free Clinical Assessment</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <a
+                href="tel:07803465205"
+                className="px-6 py-3.5 rounded-full bg-white border border-slate-300 text-slate-800 text-xs font-bold uppercase tracking-wider shadow-2xs hover:bg-slate-50 transition-all flex items-center gap-2"
+              >
+                <Phone className="w-4 h-4 text-[#0E6C6E]" />
+                <span>Call 07803 465205</span>
+              </a>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5 relative aspect-[4/3.5] rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+            <Image
+              src="/images/services-hero.png"
+              alt="CareWeb nurse providing compassionate clinical home healthcare to elderly client"
+              fill
+              priority
+              className="object-cover"
+            />
           </div>
         </div>
       </section>

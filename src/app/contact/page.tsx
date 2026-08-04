@@ -61,10 +61,6 @@ export default function ContactPage() {
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-md">
           <div className="space-y-2 border-b border-slate-100 pb-6 mb-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#DCF2F2] text-[#0E6C6E] text-xs font-bold uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Direct Consultation Request</span>
-            </div>
             <h2 className="text-2xl sm:text-3xl font-bold font-heading text-slate-900">
               Speak with a Clinical Coordinator
             </h2>
