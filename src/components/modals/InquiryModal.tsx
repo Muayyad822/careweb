@@ -2,11 +2,15 @@
 
 import React, { useState } from "react";
 import { useConsultation } from "@/context/ConsultationContext";
-import { X, Send, CheckCircle2, MessageSquareText } from "lucide-react";
+import { X, Send, CheckCircle2, MessageSquareText, Loader2, AlertCircle } from "lucide-react";
+import confetti from "canvas-confetti";
+import { submitForm } from "@/lib/formSubmit";
 
 export function InquiryModal() {
   const { isInquiryOpen, closeInquiry } = useConsultation();
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -14,13 +18,40 @@ export function InquiryModal() {
 
   if (!isInquiryOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setErrorMessage("");
+
+    const res = await submitForm({
+      subject: `New Quick Inquiry from ${name}`,
+      data: {
+        "Full Name": name,
+        "Phone Number": phone,
+        "Email Address": email,
+        "Inquiry Message": message,
+      },
+    });
+
+    setIsSubmitting(false);
+
+    if (res.success) {
+      setSubmitted(true);
+      confetti({
+        particleCount: 70,
+        spread: 60,
+        origin: { y: 0.6 },
+        colors: ["#0e6c6e", "#14b8a6", "#fbbf24"],
+      });
+    } else {
+      setErrorMessage(res.message || "Failed to send inquiry. Please try again.");
+    }
   };
 
   const handleResetAndClose = () => {
     setSubmitted(false);
+    setIsSubmitting(false);
+    setErrorMessage("");
     setName("");
     setEmail("");
     setPhone("");
@@ -130,14 +161,31 @@ export function InquiryModal() {
                 />
               </div>
 
-              <button
-                type="submit"
-                className="w-full py-3.5 rounded-xl bg-[#0E6C6E] hover:bg-[#094E50] text-white text-xs font-bold uppercase tracking-wider shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
-              >
-                <Send className="w-4 h-4" />
-                <span>Send Inquiry</span>
-              </button>
-            </form>
+                  {errorMessage && (
+                    <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
+                      <AlertCircle className="w-4 h-4 shrink-0" />
+                      <span>{errorMessage}</span>
+                    </div>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full py-3.5 rounded-xl bg-[#0E6C6E] hover:bg-[#094E50] disabled:bg-[#0E6C6E]/70 disabled:cursor-not-allowed text-white text-xs font-bold uppercase tracking-wider shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Sending...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        <span>Send Inquiry</span>
+                      </>
+                    )}
+                  </button>
+                </form>
           )}
         </div>
       </div>

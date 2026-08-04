@@ -66,7 +66,7 @@ export default function ServicesPage() {
                 className="px-6 py-3.5 rounded-full bg-white border border-slate-300 text-slate-800 text-xs font-bold uppercase tracking-wider shadow-2xs hover:bg-slate-50 transition-all flex items-center gap-2"
               >
                 <Phone className="w-4 h-4 text-[#0E6C6E]" />
-                <span>Call 07803 465205</span>
+                <span>Call +44 7448 335889</span>
               </a>
             </div>
           </div>

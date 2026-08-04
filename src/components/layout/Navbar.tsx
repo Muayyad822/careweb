@@ -88,7 +88,7 @@ export function Navbar() {
               className="flex items-center gap-1.5 font-bold text-white hover:text-teal-300 transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-teal-400 fill-teal-400" />
-              <span>07803 465205</span>
+              <span>+44 7448 335889</span>
             </a>
           </div>
         </div>
@@ -233,7 +233,7 @@ export function Navbar() {
               className="text-xs font-extrabold text-[#0D1E32] hover:text-[#0E6C6E] flex items-center gap-1.5"
             >
               <Phone className="w-3.5 h-3.5 text-[#0E6C6E]" />
-              <span>07803 465205</span>
+              <span>+44 7448 335889</span>
             </a>
           </div>
 

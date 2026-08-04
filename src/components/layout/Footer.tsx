@@ -33,7 +33,7 @@ export function Footer() {
               className="px-6 py-3.5 rounded-full bg-[#0E6C6E] hover:bg-[#094E50] text-white text-xs font-bold uppercase tracking-wider text-center shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
             >
               <Phone className="w-4 h-4" />
-              <span>Call 07803 465205</span>
+              <span>Call +44 7448 335889</span>
             </a>
           </div>
         </div>
@@ -151,7 +151,7 @@ export function Footer() {
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-teal-400 shrink-0" />
                 <a href="tel:07803465205" className="text-white font-bold hover:text-teal-300 transition-colors">
-                  07803 465205
+                  +44 7448 335889
                 </a>
               </div>
               <div className="flex items-center gap-2.5">

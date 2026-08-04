@@ -84,7 +84,7 @@ export default function SafeguardingPage() {
                   href="tel:07803465205"
                   className="text-base font-bold text-slate-900 hover:text-[#0E6C6E] transition-colors block"
                 >
-                  07803 465205
+                  +44 7448 335889
                 </a>
                 <p className="text-xs text-slate-500">
                   24/7 clinical &amp; safeguarding desk

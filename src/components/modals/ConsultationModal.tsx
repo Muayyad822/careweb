@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from "react";
 import { useConsultation } from "@/context/ConsultationContext";
-import { X, Calendar, CheckCircle2, Phone, User, Clock, ShieldCheck, Heart, ArrowRight, Sparkles } from "lucide-react";
+import { X, Calendar, CheckCircle2, Phone, User, Clock, ShieldCheck, Heart, ArrowRight, Sparkles, Loader2, AlertCircle } from "lucide-react";
 import confetti from "canvas-confetti";
+import { submitForm } from "@/lib/formSubmit";
 
 export function ConsultationModal() {
   const { isConsultationOpen, closeConsultation, preselectedService } =
@@ -12,6 +13,8 @@ export function ConsultationModal() {
   const [service, setService] = useState("");
   const [careFor, setCareFor] = useState("parent");
   const [urgency, setUrgency] = useState("soon");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -29,20 +32,44 @@ export function ConsultationModal() {
   useEffect(() => {
     if (isConsultationOpen) {
       setStep(1);
+      setErrorMessage("");
     }
   }, [isConsultationOpen]);
 
   if (!isConsultationOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStep(3);
-    confetti({
-      particleCount: 80,
-      spread: 70,
-      origin: { y: 0.6 },
-      colors: ["#0e6c6e", "#14b8a6", "#fbbf24"],
+    setIsSubmitting(true);
+    setErrorMessage("");
+
+    const res = await submitForm({
+      subject: `New Care Consultation: ${formData.name} (${service || "General Care"})`,
+      data: {
+        "Full Name": formData.name,
+        "Phone Number": formData.phone,
+        "Email Address": formData.email,
+        "Service Required": service || "General Consultation",
+        "Care Recipient": careFor === "parent" ? "Parent" : careFor === "spouse" ? "Spouse / Partner" : careFor === "relative" ? "Other Relative" : "Myself",
+        "Urgency": urgency === "immediate" ? "Immediate / Urgent" : urgency === "soon" ? "Within Next 2-4 Weeks" : "Exploring Options / Future",
+        "Postcode / Area": formData.postcode,
+        "Notes & Requirements": formData.notes || "None provided",
+      },
     });
+
+    setIsSubmitting(false);
+
+    if (res.success) {
+      setStep(3);
+      confetti({
+        particleCount: 80,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ["#0e6c6e", "#14b8a6", "#fbbf24"],
+      });
+    } else {
+      setErrorMessage(res.message || "Failed to submit booking. Please try again.");
+    }
   };
 
   return (
@@ -235,22 +262,38 @@ export function ConsultationModal() {
                 />
               </div>
 
-              <div className="flex items-center gap-3 pt-2">
-                <button
-                  type="button"
-                  onClick={() => setStep(1)}
-                  className="py-3 px-4 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold uppercase tracking-wider hover:bg-slate-50 transition-colors"
-                >
-                  Back
-                </button>
-                <button
-                  type="submit"
-                  className="flex-1 py-3 rounded-xl bg-[#0E6C6E] hover:bg-[#094E50] text-white text-xs font-bold uppercase tracking-wider shadow-sm transition-all cursor-pointer"
-                >
-                  Confirm Consultation Booking
-                </button>
-              </div>
-            </form>
+                  {errorMessage && (
+                    <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
+                      <AlertCircle className="w-4 h-4 shrink-0" />
+                      <span>{errorMessage}</span>
+                    </div>
+                  )}
+
+                  <div className="flex items-center gap-3 pt-2">
+                    <button
+                      type="button"
+                      disabled={isSubmitting}
+                      onClick={() => setStep(1)}
+                      className="py-3 px-4 rounded-xl border border-slate-300 text-slate-700 text-xs font-bold uppercase tracking-wider hover:bg-slate-50 disabled:opacity-50 transition-colors"
+                    >
+                      Back
+                    </button>
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="flex-1 py-3 rounded-xl bg-[#0E6C6E] hover:bg-[#094E50] disabled:bg-[#0E6C6E]/70 disabled:cursor-not-allowed text-white text-xs font-bold uppercase tracking-wider shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          <span>Submitting...</span>
+                        </>
+                      ) : (
+                        <span>Confirm Consultation Booking</span>
+                      )}
+                    </button>
+                  </div>
+                </form>
           )}
 
           {step === 3 && (

@@ -17,12 +17,17 @@ import {
   Send,
   FileCheck,
   Sparkles,
+  Loader2,
+  AlertCircle,
 } from "lucide-react";
 import confetti from "canvas-confetti";
+import { submitForm } from "@/lib/formSubmit";
 
 export default function CareerPage() {
   const [selectedRole, setSelectedRole] = useState("all");
   const [applied, setApplied] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -119,15 +124,36 @@ export default function CareerPage() {
     },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setApplied(true);
-    confetti({
-      particleCount: 90,
-      spread: 75,
-      origin: { y: 0.6 },
-      colors: ["#0e6c6e", "#14b8a6", "#fbbf24"],
+    setIsSubmitting(true);
+    setErrorMessage("");
+
+    const res = await submitForm({
+      subject: `New Job Application: ${formData.name} - ${formData.role}`,
+      data: {
+        "Applicant Name": formData.name,
+        "Email Address": formData.email,
+        "Phone Number": formData.phone,
+        "Position Applied For": formData.role,
+        "Location / Postcode": formData.postcode || "Not specified",
+        "Experience & Notes": formData.notes || "None provided",
+      },
     });
+
+    setIsSubmitting(false);
+
+    if (res.success) {
+      setApplied(true);
+      confetti({
+        particleCount: 90,
+        spread: 75,
+        origin: { y: 0.6 },
+        colors: ["#0e6c6e", "#14b8a6", "#fbbf24"],
+      });
+    } else {
+      setErrorMessage(res.message || "Failed to submit application. Please try again.");
+    }
   };
 
   const filteredVacancies =
@@ -449,14 +475,31 @@ export default function CareerPage() {
                 />
               </div>
 
-              <button
-                type="submit"
-                className="w-full py-4 rounded-xl bg-[#0E6C6E] hover:bg-[#094E50] text-white text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <Send className="w-4 h-4" />
-                <span>Submit Fast-Track Application</span>
-              </button>
-            </form>
+                  {errorMessage && (
+                    <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
+                      <AlertCircle className="w-4 h-4 shrink-0" />
+                      <span>{errorMessage}</span>
+                    </div>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full py-4 rounded-xl bg-[#0E6C6E] hover:bg-[#094E50] disabled:bg-[#0E6C6E]/70 disabled:cursor-not-allowed text-white text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Submitting Application...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        <span>Submit Fast-Track Application</span>
+                      </>
+                    )}
+                  </button>
+                </form>
           )}
         </div>
       </section>

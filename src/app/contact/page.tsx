@@ -12,11 +12,16 @@ import {
   Calendar,
   MessageSquare,
   Sparkles,
+  Loader2,
+  AlertCircle,
 } from "lucide-react";
 import confetti from "canvas-confetti";
+import { submitForm } from "@/lib/formSubmit";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -27,15 +32,37 @@ export default function ContactPage() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    confetti({
-      particleCount: 80,
-      spread: 70,
-      origin: { y: 0.6 },
-      colors: ["#0e6c6e", "#14b8a6", "#fbbf24"],
+    setIsSubmitting(true);
+    setErrorMessage("");
+
+    const res = await submitForm({
+      subject: `New Care Enquiry: ${formData.name} (${formData.service})`,
+      data: {
+        "Full Name": formData.name,
+        "Phone Number": formData.phone,
+        "Email Address": formData.email,
+        "Care Service": formData.service,
+        "Urgency / Timeframe": formData.urgency,
+        "Postcode / Area": formData.postcode || "Not specified",
+        "Clinical Notes / Message": formData.message || "None provided",
+      },
     });
+
+    setIsSubmitting(false);
+
+    if (res.success) {
+      setSubmitted(true);
+      confetti({
+        particleCount: 80,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ["#0e6c6e", "#14b8a6", "#fbbf24"],
+      });
+    } else {
+      setErrorMessage(res.message || "Failed to send inquiry. Please try again or call us.");
+    }
   };
 
   return (
@@ -202,12 +229,29 @@ export default function ContactPage() {
                     />
                   </div>
 
+                  {errorMessage && (
+                    <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
+                      <AlertCircle className="w-4 h-4 shrink-0" />
+                      <span>{errorMessage}</span>
+                    </div>
+                  )}
+
                   <button
                     type="submit"
-                    className="w-full py-4 rounded-xl bg-[#0E6C6E] hover:bg-[#094E50] text-white text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
+                    disabled={isSubmitting}
+                    className="w-full py-4 rounded-xl bg-[#0E6C6E] hover:bg-[#094E50] disabled:bg-[#0E6C6E]/70 disabled:cursor-not-allowed text-white text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    <Send className="w-4 h-4" />
-                    <span>Submit &amp; Request Callback</span>
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Sending Message...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        <span>Submit &amp; Request Callback</span>
+                      </>
+                    )}
                   </button>
                 </form>
               )}
@@ -247,7 +291,7 @@ export default function ContactPage() {
                 href="tel:07803465205"
                 className="text-lg font-bold text-[#0E6C6E] hover:underline"
               >
-                07803 465205
+                +44 7448 335889
               </a>
               <p className="text-xs text-slate-500 mt-1">
                 24/7 direct clinical coordinator line
