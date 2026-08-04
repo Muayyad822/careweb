@@ -35,6 +35,17 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
@@ -154,40 +165,80 @@ export function Navbar() {
                 <Phone className="w-4 h-4" />
               </a>
               <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                onClick={() => setMobileMenuOpen(true)}
                 type="button"
                 className="p-2 rounded-lg text-slate-700 hover:text-[#0E6C6E] hover:bg-slate-100 focus:outline-none cursor-pointer"
-                aria-label="Toggle menu"
+                aria-label="Open menu"
               >
-                {mobileMenuOpen ? (
-                  <X className="w-6 h-6" />
-                ) : (
-                  <Menu className="w-6 h-6" />
-                )}
+                <Menu className="w-6 h-6" />
               </button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-[#FAF8F5] border-b border-[#E6E0D4] px-4 pt-3 pb-6 space-y-4 shadow-xl">
-          <div className="flex items-center justify-between p-3 rounded-xl bg-[#DCF2F2] border border-[#BDE3E3]">
+      {/* 3. MOBILE SIDE DRAWER & OVERLAY */}
+      {/* Backdrop */}
+      <div
+        className={`fixed inset-0 bg-black/60 backdrop-blur-xs z-50 transition-opacity duration-300 md:hidden ${
+          mobileMenuOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+        onClick={() => setMobileMenuOpen(false)}
+        aria-hidden="true"
+      />
+
+      {/* Slide-over Panel from Right (where hamburger is) */}
+      <div
+        className={`fixed top-0 right-0 bottom-0 w-[85%] max-w-xs sm:max-w-sm bg-[#FAF8F5] z-50 shadow-2xl flex flex-col justify-between overflow-y-auto transition-transform duration-300 ease-out md:hidden ${
+          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile navigation"
+      >
+        <div className="p-5 space-y-6">
+          {/* Drawer Header */}
+          <div className="flex items-center justify-between pb-4 border-b border-[#E8E2D5]">
+            <Link
+              href="/"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center"
+            >
+              <img
+                src="/CarewebLogo_v4.png"
+                alt="CareWeb Logo"
+                className="h-12 w-auto object-contain"
+              />
+            </Link>
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              type="button"
+              className="p-2 rounded-full text-slate-600 hover:text-slate-900 hover:bg-slate-200/60 transition-colors focus:outline-none cursor-pointer"
+              aria-label="Close menu"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* Emergency / Helpline Banner */}
+          <div className="p-3.5 rounded-2xl bg-[#DCF2F2] border border-[#BDE3E3] space-y-1.5">
             <div className="flex items-center gap-2 text-xs font-bold text-[#0E6C6E]">
               <ShieldCheck className="w-4 h-4" />
-              <span>Professional Healthcare Team</span>
+              <span>24/7 Clinical Support</span>
             </div>
             <a
               href="tel:07803465205"
-              className="text-xs font-bold text-[#0E6C6E] underline flex items-center gap-1"
+              className="text-xs font-extrabold text-[#0D1E32] hover:text-[#0E6C6E] flex items-center gap-1.5"
             >
-              <Phone className="w-3 h-3" />
-              07803 465205
+              <Phone className="w-3.5 h-3.5 text-[#0E6C6E]" />
+              <span>07803 465205</span>
             </a>
           </div>
 
-          <nav className="flex flex-col space-y-1">
+          {/* Navigation Links */}
+          <nav className="flex flex-col space-y-1.5">
             {navLinks.map((link) => {
               const active = isActive(link.href);
               return (
@@ -195,44 +246,47 @@ export function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-base font-semibold transition-colors ${
+                  className={`flex items-center justify-between px-4 py-3.5 rounded-2xl text-base font-semibold transition-all ${
                     active
-                      ? "bg-[#0E6C6E] text-white"
-                      : "text-slate-800 hover:bg-slate-100"
+                      ? "bg-[#0E6C6E] text-white shadow-xs"
+                      : "text-slate-800 hover:bg-slate-100/80 active:bg-slate-200/60"
                   }`}
                 >
                   <span>{link.name}</span>
-                  <ChevronRight className={`w-4 h-4 ${active ? "text-white" : "text-slate-400"}`} />
+                  <ChevronRight
+                    className={`w-4 h-4 ${active ? "text-white" : "text-slate-400"}`}
+                  />
                 </Link>
               );
             })}
           </nav>
-
-          <div className="pt-3 border-t border-slate-200 flex flex-col gap-2.5">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                openInquiry();
-              }}
-              type="button"
-              className="w-full py-3 rounded-xl border border-slate-300 text-slate-800 text-xs font-bold uppercase tracking-wider hover:bg-slate-100 transition-colors"
-            >
-              Quick Inquiry
-            </button>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                openConsultation();
-              }}
-              type="button"
-              className="w-full py-3 rounded-xl bg-[#0E6C6E] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#094E50] transition-colors shadow-sm flex items-center justify-center gap-2"
-            >
-              <span>Book Free Consultation</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
         </div>
-      )}
+
+        {/* Bottom CTA Actions */}
+        <div className="p-5 border-t border-[#E8E2D5] bg-[#F5F1E9]/60 space-y-2.5">
+          <button
+            onClick={() => {
+              setMobileMenuOpen(false);
+              openInquiry();
+            }}
+            type="button"
+            className="w-full py-3.5 rounded-xl border border-slate-300 bg-white text-slate-800 text-xs font-bold uppercase tracking-wider hover:bg-slate-50 transition-colors shadow-2xs cursor-pointer"
+          >
+            Quick Inquiry
+          </button>
+          <button
+            onClick={() => {
+              setMobileMenuOpen(false);
+              openConsultation();
+            }}
+            type="button"
+            className="w-full py-3.5 rounded-xl bg-[#0E6C6E] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#094E50] transition-colors shadow-md flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <span>Book Free Consultation</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
     </header>
   );
 }
