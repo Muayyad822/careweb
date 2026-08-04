@@ -1,26 +1,134 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --font-sans: var(--font-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-heading: var(--font-outfit), var(--font-sans), sans-serif;
+    
+    --brand-teal: #0e6c6e;
+    --brand-teal-dark: #094e50;
+    --brand-teal-light: #e6f3f3;
+    --brand-teal-border: #c2e2e2;
+    --brand-navy: #0d1e32;
+    --brand-navy-card: #11253e;
+    --brand-cream: #faf8f5;
+    --brand-sand: #f2eee6;
+    --brand-gold: #c9933b;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--brand-cream);
+    color: #1e293b;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Typography helper utilities */
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Brand Color Classes */
+.bg-teal-brand {
+  background-color: #0e6c6e;
+}
+
+.hover\:bg-teal-brand-dark:hover {
+  background-color: #094e50;
+}
+
+.text-teal-brand {
+  color: #0e6c6e;
+}
+
+.bg-navy-brand {
+  background-color: #0d1e32;
+}
+
+.bg-sand-brand {
+  background-color: #f4f0e6;
+}
+
+/* Glassmorphism and Card Shadows */
+.card-shadow {
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+}
+
+.card-shadow-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-shadow-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 35px -6px rgba(14, 108, 110, 0.14), 0 8px 16px -4px rgba(15, 23, 42, 0.05);
+}
+
+.sector-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sector-card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px -12px rgba(13, 30, 50, 0.16);
+}
+
+/* Badge styles */
+.badge-care {
+  background: #dcf2f2;
+  color: #0e6c6e;
+  border: 1px solid #b7e3e3;
+}
+
+/* Subtle patterns */
+.teal-banner-pattern {
+  background-color: #0e6c6e;
+  background-image: radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.12) 0, rgba(255, 255, 255, 0.12) 150px, transparent 151px),
+                    radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.08) 0, rgba(255, 255, 255, 0.08) 180px, transparent 181px);
+}
+
+.navy-banner-pattern {
+  background-color: #0d1e32;
+  background-image: radial-gradient(circle at 100% 0%, rgba(14, 108, 110, 0.25) 0, transparent 400px),
+                    radial-gradient(circle at 0% 100%, rgba(201, 147, 59, 0.15) 0, transparent 350px);
+}
+
+/* Pulse animation for 24/7 indicator */
+@keyframes emergency-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.3);
+  }
+}
+
+.pulse-dot {
+  animation: emergency-pulse 2s infinite ease-in-out;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #c5d4d4;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0e6c6e;
 }
